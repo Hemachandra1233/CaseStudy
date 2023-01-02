@@ -106,6 +106,7 @@ public class ExpenseService {
 			saveTransaction.setTransactionDate(request.getTransactionDate());
 			saveTransaction.setTransactionTime(request.getTransactionTime());
 			saveTransaction.setExpenseTo(request.getExpenseTo());
+			saveTransaction.setUpdatedBy(user1.getName());
 
 			expenseRepo.save(saveTransaction);
 
