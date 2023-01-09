@@ -22,7 +22,7 @@ import com.financemanagement.demo.service.HomeService;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class HomeController {
 	
 	@Autowired

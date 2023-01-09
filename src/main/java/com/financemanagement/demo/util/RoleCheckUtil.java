@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.financemanagement.demo.entity.UserHome;
+import com.financemanagement.demo.entity.UserRoles;
 import com.financemanagement.demo.repository.HomeRepository;
 import com.financemanagement.demo.repository.UserHomeRepository;
 import com.financemanagement.demo.repository.UserRolesRepository;
@@ -34,16 +35,24 @@ public class RoleCheckUtil {
 	public boolean roleVerifyForExpense(long userId, long homeId) {
 		
 		UserHome userHome = userHomeRepo.findByHomeIdAndAssigneeId(homeId, userId);
-		String role = null;
+//		System.out.println("Roleeeeeeeeeeeeeeeeeeeeeee"+ userHome.getRoleId());
+		long role = 0;
+		String role1 = "";
 		if (userHome != null) {
-			role = roleRepo.findById(userHome.getRoleId()).get().getDesc();
+//			role = roleRepo.findById(userHome.getRoleId()).get();
+			role = userHome.getRoleId();
+//			role1 = role.getDesc();
+			System.out.println("Roleeeee"+ role1);
 		}
 		if (homeRepo.existsByIdAndUserId(homeId, userId)) {
+			System.out.println("--------------------------"+ "true");
 			return true;
 		}
-		else if(role == "Member") {
+		if (role == 2) {
+			System.out.println("------------------------"+ "true");
 			return true;
 		}
+		System.out.println("------------------------"+ "false");
 		return false;
 	}
 	

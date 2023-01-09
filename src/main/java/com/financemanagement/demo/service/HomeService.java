@@ -40,6 +40,9 @@ public class HomeService {
 	public ResponseEntity<List<GetHomes>> getAllHomesByUserId() throws Exception {
 
 		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+//		String[] id = email.split("_");
+//		Long varLong=Long.parseLong(id[1]);
+//		System.out.println("idddddddddddddd"+varLong);
 		if (userRepo.findByEmail(email) == null) {
 			throw new Exception("Not found User with id = " + email);
 		} else {
@@ -113,7 +116,7 @@ public class HomeService {
 			home.setCreatedBy(request.getCreatedBy());
 			return new ResponseEntity<Home>(homeRepo.save(home), HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
 	}
 
@@ -128,7 +131,7 @@ public class HomeService {
 			homeRepo.deleteById(homeId);
 			return new ResponseEntity<Home>(home, HttpStatus.OK);
 		}
-		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
 
 	// Get all your assigned homes

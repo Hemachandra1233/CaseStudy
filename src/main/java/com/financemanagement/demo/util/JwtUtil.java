@@ -5,8 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+
+import com.financemanagement.demo.entity.User;
+import com.financemanagement.demo.repository.UserRepository;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -14,6 +18,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JwtUtil {
+	
+	@Autowired
+	private UserRepository userRepo;
 	
 	private static final String SECRET_KEY = "Finance Management";
 
@@ -49,7 +56,10 @@ public class JwtUtil {
     public String generateToken(UserDetails userDetails) {
 
         Map<String, Object> claims = new HashMap<>();
-
+        
+        User user = new User();
+        user = userRepo.findByEmail(userDetails.getUsername());
+//        +"_"+user.getId()
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())

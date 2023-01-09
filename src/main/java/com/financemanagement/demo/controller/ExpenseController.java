@@ -32,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.financemanagement.demo.dto.ResponseByYear;
 import com.financemanagement.demo.dto.TransactionRequest;
 import com.financemanagement.demo.dto.TransactionResponse;
 import com.financemanagement.demo.entity.Bills;
@@ -185,5 +186,14 @@ public class ExpenseController {
 			response.add(response2);
 		}
 		return response;
+	}
+	
+	
+	@GetMapping("/expensess/{homeId}/{year}")
+	public List<ResponseByYear> getDataByYear(@PathVariable(name = "homeId") Long homeId,
+			@PathVariable(value = "year") Long year) {
+//		System.out.println("sizeeeeeeeeeee " + expenseRepo.getData_between(homeId, fromDate, toDate).size());
+//		return expenseRepo.getData_between(homeId, fromDate, toDate);
+		return expenseRepo.getExpensesByYear2(homeId,year);
 	}
 }

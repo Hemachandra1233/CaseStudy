@@ -30,7 +30,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private JwtRequestFilter jwtRequestFilter;
 	
-	@Autowired
+	@Autowired //JwtService
 	private UserDetailsService jwtService;
 	
 	@Bean
@@ -56,10 +56,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 	
-	@Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//	@Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 	
 	@Autowired
     public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {

@@ -31,7 +31,7 @@ import com.financemanagement.demo.service.UserHomeService;
 import com.financemanagement.demo.util.RoleCheckUtil;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class UserHomeController {
 
 	@Autowired

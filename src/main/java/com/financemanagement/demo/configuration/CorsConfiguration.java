@@ -20,7 +20,7 @@ public class CorsConfiguration {
                 registry.addMapping("/**")
                         .allowedMethods(GET, POST, PUT, DELETE)
                         .allowedHeaders("*")
-                        .allowedOriginPatterns("*")
+                        .allowedOriginPatterns("http://localhost:4200")
                         .allowCredentials(true).exposedHeaders("Authorization, x-xsrf-token, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, " +
                                 "Content-Type, Access-Control-Request-Method, Custom-Filter-Header, File-Name");
             }

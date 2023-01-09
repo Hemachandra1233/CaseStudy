@@ -79,7 +79,7 @@ public class ExpenseService {
 			expenseRepo.deleteById(transactionId);
 			return new ResponseEntity<Transactions>(transaction, HttpStatus.OK);
 		}
-		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
 	
 	//creating an expense
@@ -112,7 +112,7 @@ public class ExpenseService {
 
 			return new ResponseEntity<>(saveTransaction, HttpStatus.CREATED);
 		} else {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
 	}
 	
@@ -147,7 +147,7 @@ public class ExpenseService {
 			return new ResponseEntity<>(saveTransaction, HttpStatus.ACCEPTED);
 		}
 		
-		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
 	
 	public Transactions getExpensesById(long transactionId) throws Exception {
